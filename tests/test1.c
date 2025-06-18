@@ -1,5 +1,6 @@
 
 #include "sorting_algorithms.h"
+#include "auxiliary_functions.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -7,54 +8,6 @@
 
 
 #define PRINTS 0
-
-
-//  Windows
-#ifdef _WIN32
-#include <intrin.h>
-uint64_t rdtsc()
-{
-    return __rdtsc();
-}
-
-//  Linux/GCC
-
-#elif RISCV_VECTORIAL
-uint64_t rdtsc()
-{
-        uint64_t aux;
-        __asm__ __volatile__("rdcycle %0"   : "=r"(aux));      
-        return aux;
-}
-
-#else
-
-uint64_t rdtsc()
-{
-    unsigned int lo,hi;
-    __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
-    return ((uint64_t)hi << 32) | lo;
-}
-
-#endif
-
-
-
-
-
-
-
-
-
-uint8_t confirm_array_sorted(int*array1, uint64_t array1_size);
-
-
-uint64_t time_wrapper_function(int** input_array, uint64_t input_array_size, void (*sorting_algorithm)(int** array_of_values, uint64_t size_of_array));
-
-
-void array_generation_function(int** array_of_values, uint64_t size_of_array);
-
-
 
 int main(int argc,char *argv[])
 {
@@ -95,49 +48,8 @@ int main(int argc,char *argv[])
 }
 
 
-void array_generation_function(int** array_of_values, uint64_t size_of_array)
-{
-
-        *array_of_values = (int *) malloc(size_of_array * sizeof(int)); 
-
-
-        for(uint64_t i=0; i<size_of_array; i++)
-        {
-                (*array_of_values)[i] = rand();
-        }
 
 
 
 
-        return;
-}
 
-
-uint64_t time_wrapper_function(int** input_array, uint64_t input_array_size, void (*sorting_algorithm)(int** array_of_values, uint64_t size_of_array))
-{
-        uint64_t time_taken = 0;
-
-        
-        time_taken = rdtsc();
-
-        sorting_algorithm(input_array, input_array_size);
-        
-        time_taken = rdtsc()-time_taken;
-        
-        
-        return time_taken;
-}
-
-
-uint8_t confirm_array_sorted(int*array1, uint64_t array1_size)
-{
-        for(uint64_t i=0; i<array1_size-1; i++)
-        {
-                if(array1[i] > array1[i+1])
-                        return 0;
-                
-        }
-
-
-        return 1;
-}

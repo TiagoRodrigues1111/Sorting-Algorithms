@@ -1,8 +1,8 @@
 
 /*******************************************************************************************************
-* NAME: sorting_algorithms.h                                                                    
+* NAME: auxiliary_functions.h                                                                    
 *                                                                                                       
-* PURPOSE: This file defines the function prototypes for the sorting algorithm                                                                       
+* PURPOSE: This file defines the function prototypes for auxiliary functions                                                                       
 *                                                                                                       
 * GLOBAL VARIABLES: None                                                                                
 *                                                                                                       
@@ -15,8 +15,8 @@
 *
 *                                                                                                      
 *******************************************************************************************************/
-#ifndef SORTING_ALGORITHMS_H
-#define SORTING_ALGORITHMS_H
+#ifndef AUXILIARY_FUNCTIONS_H
+#define AUXILIARY_FUNCTIONS_H
 
 /* 0 copyright/licensing */
 /*******************************************************************************************************
@@ -63,60 +63,62 @@ extern "C" {
 
 /******************************************************************
 *
-* FUNCTION NAME: bubble_sort     
+* FUNCTION NAME: confirm_array_sorted     
 *
-* PURPOSE: Declaration of the bubble_sort algorithm
+* PURPOSE: Declaration of the function to check if an array is sorted
 *
 * ARGUMENTS:
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       int*	        I	pointer to the memory position of the array to check
 * size_of_array         uint64_t        I       number_of_elements in the array
 *
-* RETURNS: void
+* RETURNS: uint8_t
 *
 *
 *****************************************************************/
-void bubble_sort(int** array_of_values, uint64_t size_of_array);
+uint8_t confirm_array_sorted(int* array_of_values, uint64_t size_of_array);
 
 /******************************************************************
 *
-* FUNCTION NAME: selection_sort     
+* FUNCTION NAME: time_wrapper_function     
 *
-* PURPOSE: Declaration of the selection_sort algorithm
+* PURPOSE: Declaration of the function to wrap a sorting function in timers
 *
 * ARGUMENTS:
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
-* size_of_array         uint64_t        I       number_of_elements in the array
+* input_array           int**           I/O     pointer to the memory position of the array to check
+* input_array_size      uint64_t        I       number_of_elements in the array
+* sorting_algorithm     function        I       sorting algorithm to check
 *
-* RETURNS: void
+* RETURNS: uint64_t
 *
 *
 *****************************************************************/
-void selection_sort(int** array_of_values, uint64_t size_of_array);
+uint64_t time_wrapper_function(int** input_array, uint64_t input_array_size, void (*sorting_algorithm)(int** array_of_values, uint64_t size_of_array));
+
 
 /******************************************************************
 *
-* FUNCTION NAME: insertion_sort     
+* FUNCTION NAME: array_generation_function     
 *
-* PURPOSE: Declaration of the insertion_sort algorithm
+* PURPOSE: Declaration of the function to generate an array
 *
 * ARGUMENTS:
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       int*	        I	pointer to the memory position of the array to check
 * size_of_array         uint64_t        I       number_of_elements in the array
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void insertion_sort(int** array_of_values, uint64_t size_of_array);
+void array_generation_function(int** array_of_values, uint64_t size_of_array);
 
 
 
