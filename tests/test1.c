@@ -5,7 +5,7 @@
 #include <time.h>
 
 
-#define PRINTS 0
+#define PRINTS 1
 
 
 //  Windows
@@ -40,6 +40,8 @@ uint64_t rdtsc()
 
 
 
+void selection_sort(int** array_of_values, uint64_t size_of_array);
+
 void bubble_sort(int** array_of_values, uint64_t size_of_array);
 
 
@@ -53,7 +55,7 @@ void array_generation_function(int** array_of_values, uint64_t size_of_array);
 int main(int argc,char *argv[])
 {
         int *array1= NULL;
-        uint64_t array1_size = 100000;
+        uint64_t array1_size = 10;
         srand(time(NULL));
 
         array_generation_function(&array1,array1_size);
@@ -70,11 +72,11 @@ int main(int argc,char *argv[])
         }
 
 
-        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,bubble_sort));
+        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,selection_sort));
 
         if(PRINTS)
         {
-                printf("unsorted array: ");
+                printf("sorted array: ");
                 for(uint64_t i=0; i<array1_size; i++)
                 {
                         printf("%d ",array1[i]);
@@ -143,6 +145,30 @@ void bubble_sort(int** array_of_values, uint64_t size_of_array)
                 {
                         return;
                 }
+                
+        }
+        return;
+}
+
+void selection_sort(int** array_of_values, uint64_t size_of_array)
+{
+
+        uint64_t min_index = 0;
+        for(uint64_t i=0; i<size_of_array; i++)
+        {
+                min_index = i;
+                for(uint64_t j=i+1;j<size_of_array;j++)
+                {
+                        if((*array_of_values)[min_index] > (*array_of_values)[j])
+                        {
+                                min_index = j;
+                        }
+                }
+
+                int aux_swap = (*array_of_values)[i];
+                (*array_of_values)[i] = (*array_of_values)[min_index];
+                (*array_of_values)[min_index] = aux_swap;
+
                 
         }
         return;
