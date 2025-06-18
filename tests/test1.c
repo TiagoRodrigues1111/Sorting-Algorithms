@@ -1,4 +1,5 @@
 
+#include "sorting_algorithms.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -42,8 +43,6 @@ uint64_t rdtsc()
 
 void selection_sort(int** array_of_values, uint64_t size_of_array);
 
-void bubble_sort(int** array_of_values, uint64_t size_of_array);
-
 void insertion_sort(int** array_of_values, uint64_t size_of_array);
 
 
@@ -77,7 +76,7 @@ int main(int argc,char *argv[])
         }
 
 
-        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,insertion_sort));
+        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,bubble_sort));
 
         if(PRINTS)
         {
@@ -143,31 +142,6 @@ uint8_t confirm_array_sorted(int*array1, uint64_t array1_size)
         return 1;
 }
 
-
-void bubble_sort(int** array_of_values, uint64_t size_of_array)
-{
-        uint8_t changes = 0;
-
-        for(uint64_t i=0; i<size_of_array-1; i++, changes = 0)
-        {
-                for(uint64_t j=0;j<size_of_array-i-1;j++)
-                {
-                        if((*array_of_values)[j] > (*array_of_values)[j+1])
-                        {
-                                int aux_swap = (*array_of_values)[j];
-                                (*array_of_values)[j] = (*array_of_values)[j+1];
-                                (*array_of_values)[j+1] = aux_swap;
-                                changes = 1;
-                        }
-                }
-                if (!changes)
-                {
-                        return;
-                }
-                
-        }
-        return;
-}
 
 void selection_sort(int** array_of_values, uint64_t size_of_array)
 {
