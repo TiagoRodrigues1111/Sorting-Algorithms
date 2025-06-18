@@ -41,9 +41,9 @@ uint64_t rdtsc()
 
 
 
-void selection_sort(int** array_of_values, uint64_t size_of_array);
 
-void insertion_sort(int** array_of_values, uint64_t size_of_array);
+
+
 
 
 uint8_t confirm_array_sorted(int*array1, uint64_t array1_size);
@@ -76,7 +76,7 @@ int main(int argc,char *argv[])
         }
 
 
-        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,bubble_sort));
+        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,insertion_sort));
 
         if(PRINTS)
         {
@@ -140,52 +140,4 @@ uint8_t confirm_array_sorted(int*array1, uint64_t array1_size)
 
 
         return 1;
-}
-
-
-void selection_sort(int** array_of_values, uint64_t size_of_array)
-{
-
-        uint64_t min_index = 0;
-        for(uint64_t i=0; i<size_of_array; i++)
-        {
-                min_index = i;
-                for(uint64_t j=i+1;j<size_of_array;j++)
-                {
-                        if((*array_of_values)[min_index] > (*array_of_values)[j])
-                        {
-                                min_index = j;
-                        }
-                }
-
-                int aux_swap = (*array_of_values)[i];
-                (*array_of_values)[i] = (*array_of_values)[min_index];
-                (*array_of_values)[min_index] = aux_swap;
-
-                
-        }
-        return;
-}
-
-void insertion_sort(int** array_of_values, uint64_t size_of_array)
-{
-        for(uint64_t i=0; i<size_of_array; i++)
-        {
-                for(uint64_t j=i;j>0;j--)
-                {
-                        if((*array_of_values)[j] < (*array_of_values)[j-1])
-                        {
-                                int aux_swap = (*array_of_values)[j];
-                                (*array_of_values)[j] = (*array_of_values)[j-1];
-                                (*array_of_values)[j-1] = aux_swap;
-                        }
-                        else
-                        {
-                                break;
-                        }
-                }
-
-                
-        }
-        return;
 }

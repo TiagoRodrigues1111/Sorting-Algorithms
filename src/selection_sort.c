@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
-* FILE NAME: bubble_sort.c
+* FILE NAME: selection_sort.c
 *                                                                                                               
-* PURPOSE: This file implements the functions defined in bubble_sort.h     
+* PURPOSE: This file implements the functions defined in selection_sort.h     
 *                                                                                                               
 * FILE REFERENCES:                                                                                              
 *                                                                                                               
@@ -129,9 +129,9 @@
 
 /******************************************************************
 *
-* FUNCTION NAME: bubble_sort     
+* FUNCTION NAME: selection_sort     
 *
-* PURPOSE: Definition of the bubble_sort algorithm
+* PURPOSE: Definition of the selection_sort algorithm
 *
 * ARGUMENTS:
 *
@@ -144,7 +144,7 @@
 *
 *
 *****************************************************************/
-void bubble_sort(int** array_of_values, uint64_t size_of_array)                 
+void selection_sort(int** array_of_values, uint64_t size_of_array)                 
 {
         /* LOCAL VARIABLES:
         *  Variable        Type    Description
@@ -162,26 +162,24 @@ void bubble_sort(int** array_of_values, uint64_t size_of_array)
                 return ;
         }
 
-        uint8_t changes = 0;
-        for(uint64_t i=0; i<size_of_array-1; i++, changes = 0)
+        
+        uint64_t min_index = 0;
+        for(uint64_t i=0; i<size_of_array; i++)
         {
-                for(uint64_t j=0;j<size_of_array-i-1;j++)
+                min_index = i;
+                for(uint64_t j=i+1;j<size_of_array;j++)
                 {
-                        if((*array_of_values)[j] > (*array_of_values)[j+1])
+                        if((*array_of_values)[min_index] > (*array_of_values)[j])
                         {
-                                int aux_swap = (*array_of_values)[j];
-                                (*array_of_values)[j] = (*array_of_values)[j+1];
-                                (*array_of_values)[j+1] = aux_swap;
-                                changes = 1;
+                                min_index = j;
                         }
                 }
-                if (!changes)
-                {
-                        return;
-                }
-                
-        }             
 
-        
-        return ;        
+                int aux_swap = (*array_of_values)[i];
+                (*array_of_values)[i] = (*array_of_values)[min_index];
+                (*array_of_values)[min_index] = aux_swap;
+
+                
+        }
+        return;   
 }

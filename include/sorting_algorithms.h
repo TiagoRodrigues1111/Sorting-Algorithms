@@ -80,6 +80,43 @@ extern "C" {
 *****************************************************************/
 void bubble_sort(int** array_of_values, uint64_t size_of_array);
 
+/******************************************************************
+*
+* FUNCTION NAME: selection_sort     
+*
+* PURPOSE: Definition of the selection_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void selection_sort(int** array_of_values, uint64_t size_of_array);
+
+/******************************************************************
+*
+* FUNCTION NAME: insertion_sort     
+*
+* PURPOSE: Definition of the insertion_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void insertion_sort(int** array_of_values, uint64_t size_of_array);
 
 
 

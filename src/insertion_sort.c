@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
-* FILE NAME: bubble_sort.c
+* FILE NAME: insertion_sort.c
 *                                                                                                               
-* PURPOSE: This file implements the functions defined in bubble_sort.h     
+* PURPOSE: This file implements the functions defined in insertion_sort.h     
 *                                                                                                               
 * FILE REFERENCES:                                                                                              
 *                                                                                                               
@@ -129,9 +129,9 @@
 
 /******************************************************************
 *
-* FUNCTION NAME: bubble_sort     
+* FUNCTION NAME: insertion_sort     
 *
-* PURPOSE: Definition of the bubble_sort algorithm
+* PURPOSE: Definition of the insertion_sort algorithm
 *
 * ARGUMENTS:
 *
@@ -144,7 +144,7 @@
 *
 *
 *****************************************************************/
-void bubble_sort(int** array_of_values, uint64_t size_of_array)                 
+void insertion_sort(int** array_of_values, uint64_t size_of_array)                 
 {
         /* LOCAL VARIABLES:
         *  Variable        Type    Description
@@ -162,26 +162,23 @@ void bubble_sort(int** array_of_values, uint64_t size_of_array)
                 return ;
         }
 
-        uint8_t changes = 0;
-        for(uint64_t i=0; i<size_of_array-1; i++, changes = 0)
+        for(uint64_t i=0; i<size_of_array; i++)
         {
-                for(uint64_t j=0;j<size_of_array-i-1;j++)
+                for(uint64_t j=i;j>0;j--)
                 {
-                        if((*array_of_values)[j] > (*array_of_values)[j+1])
+                        if((*array_of_values)[j] < (*array_of_values)[j-1])
                         {
                                 int aux_swap = (*array_of_values)[j];
-                                (*array_of_values)[j] = (*array_of_values)[j+1];
-                                (*array_of_values)[j+1] = aux_swap;
-                                changes = 1;
+                                (*array_of_values)[j] = (*array_of_values)[j-1];
+                                (*array_of_values)[j-1] = aux_swap;
+                        }
+                        else
+                        {
+                                break;
                         }
                 }
-                if (!changes)
-                {
-                        return;
-                }
-                
-        }             
 
-        
-        return ;        
+                
+        }
+        return; 
 }
