@@ -5,7 +5,7 @@
 #include <time.h>
 
 
-#define PRINTS 1
+#define PRINTS 0
 
 
 //  Windows
@@ -44,6 +44,11 @@ void selection_sort(int** array_of_values, uint64_t size_of_array);
 
 void bubble_sort(int** array_of_values, uint64_t size_of_array);
 
+void insertion_sort(int** array_of_values, uint64_t size_of_array);
+
+
+uint8_t confirm_array_sorted(int*array1, uint64_t array1_size);
+
 
 uint64_t time_wrapper_function(int** input_array, uint64_t input_array_size, void (*sorting_algorithm)(int** array_of_values, uint64_t size_of_array));
 
@@ -55,7 +60,7 @@ void array_generation_function(int** array_of_values, uint64_t size_of_array);
 int main(int argc,char *argv[])
 {
         int *array1= NULL;
-        uint64_t array1_size = 10;
+        uint64_t array1_size = 10000;
         srand(time(NULL));
 
         array_generation_function(&array1,array1_size);
@@ -72,7 +77,7 @@ int main(int argc,char *argv[])
         }
 
 
-        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,selection_sort));
+        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,insertion_sort));
 
         if(PRINTS)
         {
@@ -83,6 +88,8 @@ int main(int argc,char *argv[])
                 }
                 printf("\n");
         }
+
+        printf("Sorted?: %d",confirm_array_sorted(array1,array1_size));
 
 
         return 0;
@@ -123,6 +130,18 @@ uint64_t time_wrapper_function(int** input_array, uint64_t input_array_size, voi
 }
 
 
+uint8_t confirm_array_sorted(int*array1, uint64_t array1_size)
+{
+        for(uint64_t i=0; i<array1_size-1; i++)
+        {
+                if(array1[i] > array1[i+1])
+                        return 0;
+                
+        }
+
+
+        return 1;
+}
 
 
 void bubble_sort(int** array_of_values, uint64_t size_of_array)
@@ -168,6 +187,29 @@ void selection_sort(int** array_of_values, uint64_t size_of_array)
                 int aux_swap = (*array_of_values)[i];
                 (*array_of_values)[i] = (*array_of_values)[min_index];
                 (*array_of_values)[min_index] = aux_swap;
+
+                
+        }
+        return;
+}
+
+void insertion_sort(int** array_of_values, uint64_t size_of_array)
+{
+        for(uint64_t i=0; i<size_of_array; i++)
+        {
+                for(uint64_t j=i;j>0;j--)
+                {
+                        if((*array_of_values)[j] < (*array_of_values)[j-1])
+                        {
+                                int aux_swap = (*array_of_values)[j];
+                                (*array_of_values)[j] = (*array_of_values)[j-1];
+                                (*array_of_values)[j-1] = aux_swap;
+                        }
+                        else
+                        {
+                                break;
+                        }
+                }
 
                 
         }
