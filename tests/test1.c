@@ -12,7 +12,7 @@
 int main(int argc,char *argv[])
 {
         int *array1= NULL;
-        uint64_t array1_size = 10000;
+        uint64_t array1_size = 4;
         srand(time(NULL));
 
         array_generation_function(&array1,array1_size);
@@ -29,7 +29,7 @@ int main(int argc,char *argv[])
         }
 
 
-        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,insertion_sort));
+        printf("%lu time taken\n",time_wrapper_function(&array1,array1_size,bubble_sort));
 
         if(PRINTS)
         {

@@ -119,6 +119,26 @@ void selection_sort(int** array_of_values, uint64_t size_of_array);
 void insertion_sort(int** array_of_values, uint64_t size_of_array);
 
 
+/******************************************************************
+*
+* FUNCTION NAME: bogo_sort     
+*
+* PURPOSE: Declaration of the bogo_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void bogo_sort(int** array_of_values, uint64_t size_of_array);
+
+
 
 #ifdef __cplusplus
 }
