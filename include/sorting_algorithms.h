@@ -139,6 +139,26 @@ void insertion_sort(int** array_of_values, uint64_t size_of_array);
 void bogo_sort(int** array_of_values, uint64_t size_of_array);
 
 
+/******************************************************************
+*
+* FUNCTION NAME: comb_sort     
+*
+* PURPOSE: Definition of the comb_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void comb_sort(int** array_of_values, uint64_t size_of_array);
+
+
 
 #ifdef __cplusplus
 }
