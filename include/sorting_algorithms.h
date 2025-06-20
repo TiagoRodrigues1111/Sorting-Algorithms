@@ -12,7 +12,7 @@
 * Date          Author          Change Id       Release         Description Of Change                   
 * ----------    --------------- ---------       -------         -----------------------------------     
 * 18-06-2025    Tiago Rodrigues                       1         File preparation     
-*
+* 20-06-2025    Tiago Rodrigues                       1         Added Shell sort     
 *                                                                                                      
 *******************************************************************************************************/
 #ifndef SORTING_ALGORITHMS_H
@@ -157,6 +157,28 @@ void bogo_sort(int** array_of_values, uint64_t size_of_array);
 *
 *****************************************************************/
 void comb_sort(int** array_of_values, uint64_t size_of_array);
+
+
+/******************************************************************
+*
+* FUNCTION NAME: shell_sort     
+*
+* PURPOSE: Definition of the shell_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void shell_sort(int** array_of_values, uint64_t size_of_array);
+
+
 
 
 
