@@ -71,14 +71,16 @@ extern "C" {
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int*	        I	pointer to the memory position of the array to check
+* array_of_values       void*	        I	pointer to the memory position of the array to check
 * size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_func          function        I       comparison function for elements in the array
 *
 * RETURNS: uint8_t
 *
 *
 *****************************************************************/
-uint8_t confirm_array_sorted(int* array_of_values, uint64_t size_of_array);
+uint8_t confirm_array_sorted(void* array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_func)(void* val1, void* val2));
 
 /******************************************************************
 *
@@ -92,13 +94,16 @@ uint8_t confirm_array_sorted(int* array_of_values, uint64_t size_of_array);
 * --------              ----            ---     ------------
 * input_array           int**           I/O     pointer to the memory position of the array to check
 * input_array_size      uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
 * sorting_algorithm     function        I       sorting algorithm to check
+* compare_func          function        I       comparison function for elements in the array
+*
 *
 * RETURNS: uint64_t
 *
 *
 *****************************************************************/
-uint64_t time_wrapper_function(int** input_array, uint64_t input_array_size, void (*sorting_algorithm)(int** array_of_values, uint64_t size_of_array));
+uint64_t time_wrapper_function(void** input_array, uint64_t input_array_size,uint64_t size_of_datatype, void (*sorting_algorithm)(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2)),uint8_t (*compare_func)(void* val1, void* val2));
 
 
 /******************************************************************
@@ -109,16 +114,45 @@ uint64_t time_wrapper_function(int** input_array, uint64_t input_array_size, voi
 *
 * ARGUMENTS:
 *
-* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
-* --------              ----            ---     ------------
-* array_of_values       int*	        I	pointer to the memory position of the array to check
-* size_of_array         uint64_t        I       number_of_elements in the array
+* ARGUMENT 	                TYPE	        I/O	DESCRIPTION
+* --------                      ----            ---     ------------
+* array_of_values               void**	        I/O	pointer to the memory position of the array to check
+* size_of_array                 uint64_t        I       number_of_elements in the array
+* size_of_datatype              uint64_t        I       byte size of datatype on the array to sort
+* params_input                  void*           I       inputs to send to the element_creation_function
+* element_creation_function     functions       I       function to create a element in the array
+* RETURNS: void
+*
+*
+*****************************************************************/
+void array_generation_function(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, void* params_input, void (*element_creation_function)(void* pointer_to_mem, void* params));
+
+
+
+
+/******************************************************************
+*
+* FUNCTION NAME: print_array     
+*
+* PURPOSE: Declaration of the function to generate an array
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	                TYPE	        I/O	DESCRIPTION
+* --------                      ----            ---     ------------
+* array_of_values               void*	        I/O	pointer to the memory position of the array to check
+* size_of_array                 uint64_t        I       number_of_elements in the array
+* size_of_datatype              uint64_t        I       byte size of datatype on the array to sort
+* element_print_function        functions       I       function to print an element
+*
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void array_generation_function(int** array_of_values, uint64_t size_of_array);
+void print_array(void* array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, void (*element_print_function)(void* pointer_to_mem));
+
+
 
 
 

@@ -71,14 +71,16 @@ extern "C" {
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
 * size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void bubble_sort(int** array_of_values, uint64_t size_of_array);
+void bubble_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
 /******************************************************************
 *
