@@ -153,7 +153,7 @@ void shell_sort(int** array_of_values, uint64_t size_of_array)
         */
 
 
-        uint64_t gap_values[] = {701, 301, 132, 57, 23, 10, 4, 1};
+        uint64_t gap_values[] = {1750, 701, 301, 132, 57, 23, 10, 4, 1};
         uint64_t number_of_gaps = sizeof(gap_values) / sizeof(uint64_t);
 
 
