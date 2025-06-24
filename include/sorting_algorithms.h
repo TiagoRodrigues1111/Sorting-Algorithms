@@ -92,14 +92,16 @@ void bubble_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_o
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
 * size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void selection_sort(int** array_of_values, uint64_t size_of_array);
+void selection_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
 /******************************************************************
 *
@@ -111,14 +113,16 @@ void selection_sort(int** array_of_values, uint64_t size_of_array);
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
 * size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void insertion_sort(int** array_of_values, uint64_t size_of_array);
+void insertion_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
 
 /******************************************************************
@@ -147,40 +151,44 @@ void bogo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_
 *
 * FUNCTION NAME: comb_sort     
 *
-* PURPOSE: Definition of the comb_sort algorithm
+* PURPOSE: Declaration of the comb_sort algorithm
 *
 * ARGUMENTS:
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
 * size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void comb_sort(int** array_of_values, uint64_t size_of_array);
+void comb_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
 
 /******************************************************************
 *
 * FUNCTION NAME: shell_sort     
 *
-* PURPOSE: Definition of the shell_sort algorithm
+* PURPOSE: Declaration of the shell_sort algorithm
 *
 * ARGUMENTS:
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
 * size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void shell_sort(int** array_of_values, uint64_t size_of_array);
+void shell_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
 
 

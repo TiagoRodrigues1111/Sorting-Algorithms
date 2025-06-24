@@ -131,20 +131,22 @@
 *
 * FUNCTION NAME: comb_sort     
 *
-* PURPOSE: Definition of the comb_sort algorithm
+* PURPOSE: Declaration of the comb_sort algorithm
 *
 * ARGUMENTS:
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
 * size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void comb_sort(int** array_of_values, uint64_t size_of_array)                 
+void comb_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2))
 {
         /* LOCAL VARIABLES:
         *  Variable        Type    Description
@@ -166,6 +168,9 @@ void comb_sort(int** array_of_values, uint64_t size_of_array)
 
         uint64_t gap = size_of_array;
         uint8_t changes = 0;
+        void *aux_swap = NULL;
+        aux_swap = malloc(1*size_of_datatype);
+
 
         do{
                 changes = 0;
@@ -179,11 +184,11 @@ void comb_sort(int** array_of_values, uint64_t size_of_array)
 
                 for (uint64_t i=0; i<size_of_array-gap; i++)
                 {
-                        if ((*array_of_values)[i] > (*array_of_values)[i+gap])
+                        if (compare_function((void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype],(void *) &((uint8_t*)(*array_of_values))[(i+gap)*size_of_datatype]))
                         {
-                                int aux_swap = (*array_of_values)[i];
-                                (*array_of_values)[i] = (*array_of_values)[i+gap];
-                                (*array_of_values)[i+gap] = aux_swap;
+                                memcpy(aux_swap, (void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype], size_of_datatype); 
+                                memcpy((void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype], (void *) &((uint8_t*)(*array_of_values))[(i+gap)*size_of_datatype], size_of_datatype);
+                                memcpy((void *) &((uint8_t*)(*array_of_values))[(i+gap)*size_of_datatype], aux_swap, size_of_datatype);  
                                 changes = 1;
                         }
                 }

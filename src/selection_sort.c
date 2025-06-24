@@ -131,20 +131,22 @@
 *
 * FUNCTION NAME: selection_sort     
 *
-* PURPOSE: Definition of the selection_sort algorithm
+* PURPOSE: Declaration of the selection_sort algorithm
 *
 * ARGUMENTS:
 *
 * ARGUMENT 	        TYPE	        I/O	DESCRIPTION
 * --------              ----            ---     ------------
-* array_of_values       int**	        I/O	pointer to the memory position of the array to sort
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
 * size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
 *
 * RETURNS: void
 *
 *
 *****************************************************************/
-void selection_sort(int** array_of_values, uint64_t size_of_array)                 
+void selection_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2))            
 {
         /* LOCAL VARIABLES:
         *  Variable        Type    Description
@@ -164,20 +166,25 @@ void selection_sort(int** array_of_values, uint64_t size_of_array)
 
         
         uint64_t min_index = 0;
+        void *aux_swap = NULL;
+        aux_swap = malloc(1*size_of_datatype);
+
+
         for(uint64_t i=0; i<size_of_array; i++)
         {
                 min_index = i;
                 for(uint64_t j=i+1;j<size_of_array;j++)
                 {
-                        if((*array_of_values)[min_index] > (*array_of_values)[j])
+                        if(compare_function((void *) &((uint8_t*)(*array_of_values))[min_index*size_of_datatype],(void *) &((uint8_t*)(*array_of_values))[(j)*size_of_datatype]))
                         {
                                 min_index = j;
                         }
                 }
 
-                int aux_swap = (*array_of_values)[i];
-                (*array_of_values)[i] = (*array_of_values)[min_index];
-                (*array_of_values)[min_index] = aux_swap;
+                memcpy(aux_swap, (void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype], size_of_datatype); 
+                memcpy((void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype], (void *) &((uint8_t*)(*array_of_values))[(min_index)*size_of_datatype], size_of_datatype);
+                memcpy((void *) &((uint8_t*)(*array_of_values))[(min_index)*size_of_datatype], aux_swap, size_of_datatype);  
+
 
                 
         }
