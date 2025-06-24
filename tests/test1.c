@@ -53,7 +53,7 @@ int main(int argc,char *argv[])
         }
 
 
-        printf("%lu time taken\n",time_wrapper_function(&array1, array1_size, sizeof(int), selection_sort, compare_func));
+        printf("%lu time taken\n",time_wrapper_function(&array1, array1_size, sizeof(int), merge_sort, compare_func));
 
         if(PRINTS)
         {
