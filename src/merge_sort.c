@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
-* FILE NAME: bubble_sort.c
+* FILE NAME: merge_sort.c
 *                                                                                                               
-* PURPOSE: This file implements the functions defined in bubble_sort.h     
+* PURPOSE: This file implements the functions defined in merge_sort.h     
 *                                                                                                               
 * FILE REFERENCES:                                                                                              
 *                                                                                                               
@@ -41,7 +41,7 @@
 *
 * Date          Author                  Change Id       Release         Description Of Change                   
 * ----------    ---------------         ---------       -------         ---------------------   
-* 18-06-2025    Tiago Rodrigues                               0         File preparation     
+* 24-06-2025    Tiago Rodrigues                               0         File preparation     
 *
 *
 * ALGORITHM (PDL)
