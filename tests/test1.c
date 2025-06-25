@@ -38,7 +38,7 @@ void print_element_function(void* mem_position )
 int main(int argc,char *argv[])
 {
         void *array1= NULL;
-        uint64_t array1_size = 10000;
+        uint64_t array1_size = 3000;
         srand(time(NULL));
 
         array_generation_function(&array1,array1_size,sizeof(int),NULL,element_creation_function_1);
