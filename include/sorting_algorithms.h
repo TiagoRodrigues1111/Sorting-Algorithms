@@ -149,6 +149,48 @@ void bogo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_
 
 /******************************************************************
 *
+* FUNCTION NAME: bogo_sort     
+*
+* PURPOSE: Declaration of the bogo_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void bogo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
+
+/******************************************************************
+*
+* FUNCTION NAME: conditional_bogo_sort     
+*
+* PURPOSE: Declaration of the conditional_bogo_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void conditional_bogo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
+
+/******************************************************************
+*
 * FUNCTION NAME: bozo_sort     
 *
 * PURPOSE: Declaration of the bozo_sort algorithm
@@ -168,6 +210,27 @@ void bogo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_
 *****************************************************************/
 void bozo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
+
+/******************************************************************
+*
+* FUNCTION NAME: radix_sort     
+*
+* PURPOSE: Declaration of the radix_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void radix_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
 
 /******************************************************************
