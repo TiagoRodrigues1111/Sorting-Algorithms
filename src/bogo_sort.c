@@ -168,18 +168,23 @@ void bogo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_
 
         void *aux_swap = NULL;
         aux_swap = malloc(1*size_of_datatype);
+        if(NULL == aux_swap)
+        {
+                perror("Memory allocation failed");
+                return ;
+        }
 
         while(!confirm_array_sorted((*array_of_values),size_of_array,size_of_datatype,compare_function))
         {
                 for(uint64_t i=0; i<size_of_array; i++)
                 {
-                        uint64_t aux_index_value = rand()%size_of_array;
+                        uint64_t aux_index_value = rand()%(size_of_array-i) + i;
                         memcpy(aux_swap, (void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype], size_of_datatype); 
                         memcpy((void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype], (void *) &((uint8_t*)(*array_of_values))[(aux_index_value)*size_of_datatype], size_of_datatype);
                         memcpy((void *) &((uint8_t*)(*array_of_values))[(aux_index_value)*size_of_datatype], aux_swap, size_of_datatype);  
                 }
         }
 
-       
+        free(aux_swap);
         return; 
 }

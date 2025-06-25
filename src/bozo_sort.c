@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
-* FILE NAME: selection_sort.c
+* FILE NAME: bozo_sort.c
 *                                                                                                               
-* PURPOSE: This file implements the functions defined in selection_sort.h     
+* PURPOSE: This file implements the functions defined in bozo_sort.h     
 *                                                                                                               
 * FILE REFERENCES:                                                                                              
 *                                                                                                               
@@ -41,7 +41,7 @@
 *
 * Date          Author                  Change Id       Release         Description Of Change                   
 * ----------    ---------------         ---------       -------         ---------------------   
-* 18-06-2025    Tiago Rodrigues                               0         File preparation     
+* 25-06-2025    Tiago Rodrigues                               0         File preparation     
 *
 *
 * ALGORITHM (PDL)
@@ -64,12 +64,14 @@
 
 /* 1.1 Related header */
 #include "sorting_algorithms.h"
+#include "auxiliary_functions.h"
 
 /* 1.2 C system headers */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 // #include <errno.h>
+#include <time.h>
 
 /* 1.3 C++ standard library headers*/
 
@@ -129,9 +131,9 @@
 
 /******************************************************************
 *
-* FUNCTION NAME: selection_sort     
+* FUNCTION NAME: bozo_sort     
 *
-* PURPOSE: Declaration of the selection_sort algorithm
+* PURPOSE: Declaration of the bozo_sort algorithm
 *
 * ARGUMENTS:
 *
@@ -146,7 +148,7 @@
 *
 *
 *****************************************************************/
-void selection_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2))            
+void bozo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2))                
 {
         /* LOCAL VARIABLES:
         *  Variable        Type    Description
@@ -164,8 +166,6 @@ void selection_sort(void** array_of_values, uint64_t size_of_array, uint64_t siz
                 return ;
         }
 
-        
-        uint64_t min_index = 0;
         void *aux_swap = NULL;
         aux_swap = malloc(1*size_of_datatype);
         if(NULL == aux_swap)
@@ -174,27 +174,19 @@ void selection_sort(void** array_of_values, uint64_t size_of_array, uint64_t siz
                 return ;
         }
 
-        for(uint64_t i=0; i<size_of_array; i++)
+        while(!confirm_array_sorted((*array_of_values),size_of_array,size_of_datatype,compare_function))
         {
-                min_index = i;
-                for(uint64_t j=i+1;j<size_of_array;j++)
-                {
-                        if(compare_function((void *) &((uint8_t*)(*array_of_values))[min_index*size_of_datatype],(void *) &((uint8_t*)(*array_of_values))[(j)*size_of_datatype]))
-                        {
-                                min_index = j;
-                        }
-                }
 
-                memcpy(aux_swap, (void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype], size_of_datatype); 
-                memcpy((void *) &((uint8_t*)(*array_of_values))[i*size_of_datatype], (void *) &((uint8_t*)(*array_of_values))[(min_index)*size_of_datatype], size_of_datatype);
-                memcpy((void *) &((uint8_t*)(*array_of_values))[(min_index)*size_of_datatype], aux_swap, size_of_datatype);  
+                uint64_t aux_index_value = rand() % size_of_array;
+                uint64_t aux_index_value_2 = rand() % size_of_array;
+                memcpy(aux_swap, (void *) &((uint8_t*)(*array_of_values))[aux_index_value_2*size_of_datatype], size_of_datatype); 
+                memcpy((void *) &((uint8_t*)(*array_of_values))[aux_index_value_2*size_of_datatype], (void *) &((uint8_t*)(*array_of_values))[(aux_index_value)*size_of_datatype], size_of_datatype);
+                memcpy((void *) &((uint8_t*)(*array_of_values))[(aux_index_value)*size_of_datatype], aux_swap, size_of_datatype);  
 
-
-                
         }
-
 
         free(aux_swap);
 
-        return;   
+        
+        return; 
 }

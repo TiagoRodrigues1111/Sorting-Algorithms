@@ -11,8 +11,10 @@
 *                                                                                                       
 * Date          Author          Change Id       Release         Description Of Change                   
 * ----------    --------------- ---------       -------         -----------------------------------     
-* 18-06-2025    Tiago Rodrigues                       1         File preparation     
-* 20-06-2025    Tiago Rodrigues                       1         Added Shell sort     
+* 18-06-2025    Tiago Rodrigues                       1         File preparation
+* 19-06-2025    Tiago Rodrigues                       0         Added Bogo sort
+* 20-06-2025    Tiago Rodrigues                       1         Added Shell sort
+* 24-06-2025    Tiago Rodrigues                       1         Added merge sort
 *                                                                                                      
 *******************************************************************************************************/
 #ifndef SORTING_ALGORITHMS_H
@@ -124,7 +126,6 @@ void selection_sort(void** array_of_values, uint64_t size_of_array, uint64_t siz
 *****************************************************************/
 void insertion_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
-
 /******************************************************************
 *
 * FUNCTION NAME: bogo_sort     
@@ -145,6 +146,28 @@ void insertion_sort(void** array_of_values, uint64_t size_of_array, uint64_t siz
 *
 *****************************************************************/
 void bogo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
+
+/******************************************************************
+*
+* FUNCTION NAME: bozo_sort     
+*
+* PURPOSE: Declaration of the bozo_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void bozo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
+
 
 
 /******************************************************************
@@ -168,7 +191,6 @@ void bogo_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_
 *****************************************************************/
 void comb_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
-
 /******************************************************************
 *
 * FUNCTION NAME: shell_sort     
@@ -190,7 +212,6 @@ void comb_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_
 *****************************************************************/
 void shell_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
 
-
 /******************************************************************
 *
 * FUNCTION NAME: merge_sort     
@@ -211,6 +232,7 @@ void shell_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of
 *
 *****************************************************************/
 void merge_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
+
 
 
 

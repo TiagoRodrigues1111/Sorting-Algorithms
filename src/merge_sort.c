@@ -165,10 +165,15 @@ void merge_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of
         }
 
         void* array_of_values_aux=malloc(size_of_array * size_of_datatype); ;            // will be used to ping-pong result values in between operation
+        if(NULL == array_of_values_aux)
+        {
+                perror("Memory allocation failed");
+                return ;
+        }
 
         merge_sort_rec(array_of_values,&array_of_values_aux,size_of_array, size_of_datatype, 0, size_of_array-1, compare_function);
 
-
+        free(array_of_values_aux);
 
         return ;        
 }

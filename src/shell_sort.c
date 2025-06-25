@@ -173,7 +173,11 @@ void shell_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of
         
         void *aux_swap = NULL;
         aux_swap = malloc(1*size_of_datatype);
-
+        if(NULL == aux_swap)
+        {
+                perror("Memory allocation failed");
+                return ;
+        }
 
         for(uint64_t i=0; i<number_of_gaps; i++)        
         {
@@ -195,5 +199,8 @@ void shell_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of
 
                 
         }
+
+        free(aux_swap);
+
         return;   
 }

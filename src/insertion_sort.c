@@ -166,6 +166,11 @@ void insertion_sort(void** array_of_values, uint64_t size_of_array, uint64_t siz
 
         void *aux_swap = NULL;
         aux_swap = malloc(1*size_of_datatype);
+        if(NULL == aux_swap)
+        {
+                perror("Memory allocation failed");
+                return ;
+        }
 
         for(uint64_t i=0; i<size_of_array; i++)
         {
@@ -185,5 +190,8 @@ void insertion_sort(void** array_of_values, uint64_t size_of_array, uint64_t siz
 
                 
         }
+
+        free(aux_swap);
+
         return; 
 }

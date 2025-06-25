@@ -251,6 +251,11 @@ void array_generation_function(void** array_of_values, uint64_t size_of_array, u
         }
 
         *array_of_values =  malloc(size_of_array * size_of_datatype); 
+        if(NULL == *array_of_values)
+        {
+                perror("Memory allocation failed");
+                return ;
+        }
 
 
         for(uint64_t i=0; i<size_of_array; i++)

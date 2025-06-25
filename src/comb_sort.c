@@ -170,7 +170,11 @@ void comb_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_
         uint8_t changes = 0;
         void *aux_swap = NULL;
         aux_swap = malloc(1*size_of_datatype);
-
+        if(NULL == aux_swap)
+        {
+                perror("Memory allocation failed");
+                return ;
+        }
 
         do{
                 changes = 0;
@@ -196,7 +200,7 @@ void comb_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_
 
         }while (1 == changes || 1 != gap);
 
-
+        free(aux_swap);
 
         return;
 }

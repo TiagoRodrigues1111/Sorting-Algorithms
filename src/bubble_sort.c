@@ -167,6 +167,11 @@ void bubble_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_o
         uint8_t changes = 0;
         void *aux_swap = NULL;
         aux_swap = malloc(1*size_of_datatype);
+        if(NULL == aux_swap)
+        {
+                perror("Memory allocation failed");
+                return ;
+        }
 
         for(uint64_t i=0; i<size_of_array-1; i++, changes = 0)
         {
@@ -188,6 +193,7 @@ void bubble_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_o
                         return;
                 }       
         }
+        
         free(aux_swap); 
         return ;        
 }
