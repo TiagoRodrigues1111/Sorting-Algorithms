@@ -16,7 +16,9 @@
 * 20-06-2025    Tiago Rodrigues                       1         Added Shell sort
 * 24-06-2025    Tiago Rodrigues                       1         Added merge sort
 * 25-06-2025    Tiago Rodrigues                       1         Added bozo, cocktail, conditional bogo, stooge, odd_even and gnome sort
-*                                                                                                      
+* 26-06-2025    Tiago Rodrigues                       0         Added quick sort    
+*
+*                                                                                                  
 *******************************************************************************************************/
 #ifndef SORTING_ALGORITHMS_H
 #define SORTING_ALGORITHMS_H
@@ -378,6 +380,28 @@ void merge_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of
 *
 *****************************************************************/
 void gnome_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
+
+/******************************************************************
+*
+* FUNCTION NAME: quick_sort     
+*
+* PURPOSE: Declaration of the quick_sort algorithm
+*
+* ARGUMENTS:
+*
+* ARGUMENT 	        TYPE	        I/O	DESCRIPTION
+* --------              ----            ---     ------------
+* array_of_values       void**	        I/O	pointer to the memory position of the array to sort
+* size_of_array         uint64_t        I       number_of_elements in the array
+* size_of_datatype      uint64_t        I       size of datatype
+* compare_function      function        I       comparison function between elements in the array
+*
+* RETURNS: void
+*
+*
+*****************************************************************/
+void quick_sort(void** array_of_values, uint64_t size_of_array, uint64_t size_of_datatype, uint8_t (*compare_function)(void* elem1, void* elem2));
+
 
 
 #ifdef __cplusplus
